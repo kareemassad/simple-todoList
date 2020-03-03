@@ -4,12 +4,31 @@
 import tkinter
 import random
 
-#Create root window
+# Create root window
 root = tkinter.Tk()
+# Change window background color
+root.configure(bg="white")
+# Change Title
+root.title("My To-Do List")
+# Change window size
+root.geometry("200x500")
+
+# Create an empty list
+tasks = []
+tasks = ["Call mom", "buy toilet paper", "ahmed gay"]
 
 # Functions
+def update_listbox():
+    clear_listbox()
+    for task in tasks:
+        listBox_tasks.insert("end",task) #list at end stack style
+
+def clear_listbox():
+    listBox_tasks.delete(0, "end")
+
 def add_task():
-    pass
+    update_listbox()
+
 def del_all():
     pass
 def del_one():
@@ -57,5 +76,8 @@ btn_show_tasks.pack()
 
 btn_exit = tkinter.Button(root, text="Exit", fg="green", bg="white", command=exit)
 btn_exit.pack()
+
+listBox_tasks = tkinter.Listbox(root)
+listBox_tasks.pack()
 #start the main event loop
 root.mainloop()
