@@ -15,7 +15,7 @@ root.geometry("200x500")
 
 # Create an empty list
 tasks = []
-tasks = ["Call mom", "buy toilet paper", "ahmed gay"]
+tasks = ["Call mom", "buy toilet paper", "wowwie"]
 
 # Functions
 def update_listbox():
@@ -27,20 +27,40 @@ def clear_listbox():
     listBox_tasks.delete(0, "end")
 
 def add_task():
-    update_listbox()
+    task = text_input.get()
+
+    if task != "":
+        tasks.append(task)
+        update_listbox()
+    else:
+        label_display["text"] = "Please enter a task."
 
 def del_all():
-    pass
+    global tasks
+    tasks = []
+    update_listbox()
+
 def del_one():
     pass
+
 def sort_asc():
-    pass
+    tasks.sort()
+    update_listbox()
+
 def sort_desc():
-    pass
+    tasks.sort()
+    tasks.reverse()
+    update_listbox()
+
 def random():
-    pass
-def show_tasks():
-    pass
+    task = random.choice(tasks)
+    label_display["text"] = task
+
+def show_tasks_count():
+    count = len(tasks)
+    msg = "Number of Tasks %s" %count
+    label_display["text"] = msg
+    
 
 label_title = tkinter.Label(root, text="TO-DO-List", bg="white")
 label_title.pack()
@@ -71,8 +91,8 @@ btn_sort_desc.pack()
 btn_random = tkinter.Button(root, text="Choose Random", fg="green", bg="white", command=random)
 btn_random.pack()
 
-btn_show_tasks= tkinter.Button(root, text="Show All Tasks", fg="green", bg="white", command=show_tasks)
-btn_show_tasks.pack()
+btn_show_tasks_count= tkinter.Button(root, text="Show All Tasks", fg="green", bg="white", command=show_tasks_count)
+btn_show_tasks_count.pack()
 
 btn_exit = tkinter.Button(root, text="Exit", fg="green", bg="white", command=exit)
 btn_exit.pack()
