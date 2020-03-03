@@ -30,11 +30,11 @@ def clear_listbox():
 def add_task():
     task = text_input.get()
 
-    if task != "":
+    if task != "":  #if task is not blank
         tasks.append(task)
         update_listbox()
     else:
-        label_display["text"] = "Please enter a task."
+        tkinter.messagebox.showwarning("Warning","You need to enter a task")
     
     text_input.delete(0,"end")
 
@@ -62,7 +62,7 @@ def sort_desc():
     tasks.reverse()
     update_listbox()
 
-def random():
+def randomOne():
     task = random.choice(tasks)
     label_display["text"] = task
 
@@ -98,8 +98,8 @@ btn_sort_asc.grid(row=4,column=0)
 btn_sort_desc = tkinter.Button(root, text="Sort Descending", fg="green", bg="white", command=sort_desc)
 btn_sort_desc.grid(row=5,column=0)
 
-btn_random = tkinter.Button(root, text="Choose Random", fg="green", bg="white", command=random)
-btn_random.grid(row=6,column=0)
+btn_randomOne = tkinter.Button(root, text="Choose Random", fg="green", bg="white", command=randomOne)
+btn_randomOne.grid(row=6,column=0)
 
 btn_show_tasks_count= tkinter.Button(root, text="Show All Tasks", fg="green", bg="white", command=show_tasks_count)
 btn_show_tasks_count.grid(row=7,column=0)
