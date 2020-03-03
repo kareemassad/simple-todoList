@@ -3,6 +3,7 @@
 
 import tkinter
 import random
+import tkinter.messagebox
 
 # Create root window
 root = tkinter.Tk()
@@ -15,7 +16,7 @@ root.geometry("325x275")
 
 # Create an empty list
 tasks = []
-tasks = ["Call mom", "buy toilet paper", "wowwie"]
+tasks = ["Call mom", "buy toilet paper", "Finish this thing(lol)"]
 
 # Functions
 def update_listbox():
@@ -38,9 +39,11 @@ def add_task():
     text_input.delete(0,"end")
 
 def del_all():
-    global tasks
-    tasks = []
-    update_listbox()
+    confirmed = tkinter.messagebox.askyesno("Please Confirm", "Sir are you sure about that")
+    if confirmed == True:
+        global tasks
+        tasks = []
+        update_listbox()
 
 def del_one():
     #get the item selected
